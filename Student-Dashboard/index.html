@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusCode — Student Overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Shared SVG symbols -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></symbol>
+      <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+      <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M9.94 14.06 8.5 18.5 7.06 14.06 2.5 12.5l4.56-1.56L8.5 6.5l1.44 4.44 4.56 1.56z"/><path d="M18 3v4"/><path d="M20 5h-4"/><path d="M19 15v3"/><path d="M20.5 16.5h-3"/></symbol>
+      <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/></symbol>
+      <symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M5.5 16.5a3.6 3.6 0 0 1 7 0"/><path d="M15 9.5h4"/><path d="M15 13h4"/></symbol>
+      <symbol id="i-bot" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><path d="M8 16h.01"/><path d="M16 16h.01"/></symbol>
+      <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+      <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.66V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.66"/></symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+      <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+
+      <!-- CampusCode mark -->
+      <symbol id="mark" viewBox="0 0 37 30">
+        <polygon class="mark-a" points="9,0 15,0 6,30 0,30"/>
+        <polygon class="mark-b" points="21,0 27,0 18,30 12,30" transform="translate(-1 0)"/>
+        <polygon class="mark-c" points="31,0 37,0 28,30 22,30" transform="translate(-1 0)"/>
+      </symbol>
+
+      <!-- Student avatar -->
+      <symbol id="avatar" viewBox="0 0 100 100">
+        <rect width="100" height="100" fill="#eef8d2"/>
+        <path d="M22 100c0-14 12-22 28-22s28 8 28 22z" fill="#7c5cfc"/>
+        <rect x="42" y="66" width="16" height="14" rx="4" fill="#efc48f"/>
+        <ellipse cx="50" cy="48" rx="25" ry="24" fill="#f7d6a8"/>
+        <path d="M24 44c-2-18 10-27 26-27s28 9 25 27c-4-8-10-12-16-13-8 3-22 4-35 13z" fill="#111"/>
+        <circle cx="41" cy="50" r="2.6" fill="#111"/>
+        <circle cx="59" cy="50" r="2.6" fill="#111"/>
+        <circle cx="34" cy="57" r="4.2" fill="#f2a58e" opacity=".75"/>
+        <circle cx="66" cy="57" r="4.2" fill="#f2a58e" opacity=".75"/>
+        <path d="M44 61c3 3 9 3 12 0" stroke="#c46a4a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <a class="brand" href="#">
+      <svg class="brand__mark"><use href="#mark"/></svg>
+      <span class="brand__text">
+        <span class="brand__name">CAMPUSCODE</span>
+        <span class="brand__sub">HACKATHON ARENA</span>
+      </span>
+    </a>
+
+    <p class="sidebar__heading">WORKSPACE</p>
+
+    <nav class="nav">
+      <a class="nav__item nav__item--active" href="#">
+        <svg class="nav__icon"><use href="#i-grid"/></svg>
+        <span class="nav__label">Overview</span>
+        <span class="nav__arrow">→</span>
+      </a>
+      <a class="nav__item" href="Events.html">
+        <svg class="nav__icon"><use href="#i-trophy"/></svg>
+        <span class="nav__label">Events</span>
+      </a>
+      <a class="nav__item" href="My-Events.html">
+        <svg class="nav__icon"><use href="#i-clock"/></svg>
+        <span class="nav__label">My Events</span>
+      </a>
+      <a class="nav__item" href="#">
+        <svg class="nav__icon"><use href="#i-sparkles"/></svg>
+        <span class="nav__label">HackMate AI</span>
+      </a>
+      <a class="nav__item" href="#">
+        <svg class="nav__icon"><use href="#i-sparkles"/></svg>
+        <span class="nav__label">IdeaCheck AI</span>
+      </a>
+      <a class="nav__item" href="#">
+        <svg class="nav__icon"><use href="#i-award"/></svg>
+        <span class="nav__label">Certificates</span>
+      </a>
+      <a class="nav__item" href="#">
+        <svg class="nav__icon"><use href="#i-card"/></svg>
+        <span class="nav__label">Digital Card</span>
+      </a>
+      <a class="nav__item" href="#">
+        <svg class="nav__icon"><use href="#i-bot"/></svg>
+        <span class="nav__label">RuleBot AI</span>
+        <span class="nav__tag">AI</span>
+      </a>
+      <a class="nav__item" href="#">
+        <svg class="nav__icon"><use href="#i-bot"/></svg>
+        <span class="nav__label">Student Guide</span>
+      </a>
+      <a class="nav__item" href="#">
+        <svg class="nav__icon"><use href="#i-bell"/></svg>
+        <span class="nav__label">Official Communication</span>
+      </a>
+      <a class="nav__item" href="#">
+        <svg class="nav__icon"><use href="#i-bell"/></svg>
+        <span class="nav__label">Notifications</span>
+      </a>
+      <a class="nav__item" href="#">
+        <svg class="nav__icon"><use href="#i-bot"/></svg>
+        <span class="nav__label">Help &amp; Support</span>
+      </a>
+      <a class="nav__item" href="#">
+        <svg class="nav__icon"><use href="#i-user"/></svg>
+        <span class="nav__label">Profile</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div class="main">
+
+    <!-- Top header -->
+    <header class="topbar">
+      <div class="topbar__title">
+        <p class="topbar__crumb">CAMPUSCODE / STUDENT</p>
+        <h1 class="topbar__page">OVERVIEW</h1>
+      </div>
+      <div class="topbar__actions">
+        <button class="icon-btn" type="button" aria-label="Notifications">
+          <svg class="icon-btn__icon"><use href="#i-bell"/></svg>
+          <span class="icon-btn__dot"></span>
+        </button>
+        <button class="refresh-btn" type="button">
+          <span class="refresh-btn__icon"><svg><use href="#i-refresh"/></svg></span>
+          <span class="refresh-btn__text">REFRESH</span>
+        </button>
+        <div class="user">
+          <span class="user__avatar"><svg><use href="#avatar"/></svg></span>
+          <span class="user__name">Shambhavi Chaudhary</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- Welcome -->
+      <section class="welcome">
+        <p class="eyebrow eyebrow--green">STUDENT WORKSPACE / LIVE</p>
+        <h2 class="welcome__title">WELCOME BACK, <span class="welcome__name">SHAMBHAVI</span>.</h2>
+        <p class="welcome__sub">Your CampusCode activity is loaded directly from the backend.</p>
+      </section>
+
+      <!-- Hero event card -->
+      <section class="hero">
+        <div class="hero__body">
+          <p class="eyebrow eyebrow--green">BUILD · LEARN · COLLABORATE</p>
+          <h3 class="hero__title">ReBuild '26</h3>
+          <p class="hero__text">ReBuild '26 is an individual dashboard-recreation hackathon by CampusCode. You participate alone, but you must create a team name for tracking and use it on your Unstop registration, the CampusCode portal, and every submission. Round 1 (Friday, 6 Nov, morning to 10 PM): Recreate the CampusCode user flow faithfully — Dashboard, Login, Register, and Student dashboard — and submit your demo any time till 10 PM. Round 2 (Saturday, 7 Nov, top performers from Round 1 only): Build a complete new UI in CampusCode's vibe. Frontend only, mock data is fine. No presentation round. Prizes: Winner certificate + CampusCode internship with ₹15,000 stipend, runner-up certificate, and participation certificates for all. Sunday, 8 Nov (Diwali) is free. This is a paid event (₹50 on Unstop). Paid students receive an invite code — enter it when you join this event on the portal.</p>
+          <a class="btn btn--lime" href="#">OPEN EVENT <span class="btn__arrow">↗</span></a>
+        </div>
+        <div class="hero__art" aria-hidden="true">
+          <span class="hero__avatar"><svg><use href="#avatar"/></svg></span>
+          <span class="hero__badge">RE</span>
+        </div>
+      </section>
+
+      <!-- Statistics -->
+      <section class="stats">
+        <article class="stat">
+          <p class="stat__label">REGISTERED</p>
+          <p class="stat__value">2</p>
+          <p class="stat__note">FROM BACKEND</p>
+        </article>
+        <article class="stat">
+          <p class="stat__label">ONGOING</p>
+          <p class="stat__value">1</p>
+          <p class="stat__note">FROM BACKEND</p>
+        </article>
+        <article class="stat">
+          <p class="stat__label">COMPLETED</p>
+          <p class="stat__value">1</p>
+          <p class="stat__note">FROM BACKEND</p>
+        </article>
+        <article class="stat">
+          <p class="stat__label">CERTIFICATES</p>
+          <p class="stat__value">1</p>
+          <p class="stat__note">FROM BACKEND</p>
+        </article>
+      </section>
+
+      <!-- Discover events -->
+      <section class="panel discover">
+        <div class="panel__head">
+          <h4 class="panel__label">03 / DISCOVER EVENTS</h4>
+          <a class="link" href="#">VIEW ALL ↗</a>
+        </div>
+        <div class="discover__grid">
+          <article class="event">
+            <span class="event__badge">RE</span>
+            <div class="event__info">
+              <p class="event__cat">Web Development</p>
+              <h5 class="event__name">ReBuild '26</h5>
+              <p class="event__meta">Nov 06, 2026</p>
+              <p class="event__meta">Individual participation</p>
+            </div>
+            <button class="event__btn" type="button">JOINED</button>
+          </article>
+          <article class="event">
+            <span class="event__badge">FQ</span>
+            <div class="event__info">
+              <p class="event__cat">Open Innovation</p>
+              <h5 class="event__name">FirstCommit '26 Quiz Competition 2.0</h5>
+              <p class="event__meta">–</p>
+            </div>
+            <button class="event__btn event__btn--join" type="button">JOIN NOW ↗</button>
+          </article>
+          <article class="event">
+            <span class="event__badge event__badge--dark">FQ</span>
+            <div class="event__info">
+              <p class="event__cat">Open Innovation</p>
+              <h5 class="event__name">FirstCommit '26 Quiz Competition</h5>
+              <p class="event__meta">–</p>
+            </div>
+            <button class="event__btn" type="button">JOINED</button>
+          </article>
+        </div>
+      </section>
+
+      <!-- Three-column section -->
+      <section class="trio">
+        <article class="panel deadlines">
+          <div class="panel__head">
+            <h4 class="panel__label">UPCOMING DEADLINES</h4>
+            <a class="link" href="#">VIEW ALL ↗</a>
+          </div>
+          <div class="deadlines__empty">
+            <p class="deadlines__title">No deadlines yet.</p>
+            <p class="deadlines__text">Join an event and your upcoming dates will appear here.</p>
+            <a class="btn btn--bright" href="#">BROWSE EVENTS ↗</a>
+          </div>
+        </article>
+
+        <article class="panel spotlight">
+          <h4 class="panel__label">AI SPOTLIGHT</h4>
+          <h3 class="spotlight__title">Your AI teammates are ready.</h3>
+          <p class="spotlight__text">Check your idea, find teammates, or ask the rules — right from here.</p>
+          <div class="spotlight__chips">
+            <a class="chip" href="#"><svg class="chip__icon"><use href="#i-sparkles"/></svg>IDEACHECK</a>
+            <a class="chip" href="#"><svg class="chip__icon"><use href="#i-users"/></svg>HACKMATE</a>
+            <a class="chip" href="#"><svg class="chip__icon"><use href="#i-bot"/></svg>RULEBOT</a>
+          </div>
+        </article>
+
+        <article class="panel journey">
+          <div class="panel__head">
+            <h4 class="panel__label">YOUR JOURNEY</h4>
+            <a class="link" href="#">CERTIFICATES ↗</a>
+          </div>
+          <ul class="journey__list">
+            <li class="progress">
+              <span class="progress__icon"><svg><use href="#i-trophy"/></svg></span>
+              <span class="progress__track"><span class="progress__fill progress__fill--100"></span></span>
+              <span class="progress__count">2</span>
+              <span class="progress__label">HACKATHONS</span>
+            </li>
+            <li class="progress">
+              <span class="progress__icon"><svg><use href="#i-bolt"/></svg></span>
+              <span class="progress__track"><span class="progress__fill progress__fill--50"></span></span>
+              <span class="progress__count">1</span>
+              <span class="progress__label">ONGOING</span>
+            </li>
+            <li class="progress">
+              <span class="progress__icon"><svg><use href="#i-check"/></svg></span>
+              <span class="progress__track"><span class="progress__fill progress__fill--50"></span></span>
+              <span class="progress__count">1</span>
+              <span class="progress__label">COMPLETED</span>
+            </li>
+            <li class="progress">
+              <span class="progress__icon"><svg><use href="#i-award"/></svg></span>
+              <span class="progress__track"><span class="progress__fill progress__fill--50"></span></span>
+              <span class="progress__count">1</span>
+              <span class="progress__label">CERTIFICATES</span>
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- Bottom section -->
+      <section class="bottom">
+        <article class="panel activity">
+          <div class="panel__head">
+            <h4 class="panel__label">01 / CURRENT ACTIVITY</h4>
+            <a class="link" href="#">VIEW EVENTS ↗</a>
+          </div>
+          <div class="activity__row">
+            <p class="activity__id">e2798ce3-a1b5-4806-9147-4d9f10c52ef1</p>
+            <h5 class="activity__title">ReBuild '26</h5>
+            <div class="activity__actions">
+              <button class="tag-btn" type="button">OPEN</button>
+              <button class="tag-btn tag-btn--small" type="button" aria-label="More">—</button>
+              <span class="tag-btn tag-btn--date">NOV 06, 2026</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel notifications">
+          <div class="panel__head">
+            <h4 class="panel__label">02 / NOTIFICATIONS</h4>
+            <a class="link" href="#">OPEN ALL ↗</a>
+          </div>
+          <div class="notifications__empty">
+            <svg class="notifications__mark"><use href="#mark"/></svg>
+            <p class="notifications__title">ALL CAUGHT UP</p>
+            <p class="notifications__text">No unread notifications.</p>
+          </div>
+        </article>
+      </section>
+
+    </main>
+  </div>
+
+</body>
+</html>
