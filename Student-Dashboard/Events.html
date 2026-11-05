@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Events — CampusCode Student</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="Events.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark"><i></i><i></i><i></i></div>
+      <div><div class="brand-name">CAMPUSCODE</div><div class="brand-sub">HACKATHON ARENA</div></div>
+    </div>
+    <div class="nav-label">WORKSPACE</div>
+    <nav class="nav">
+      <a class="nav-item" href="index.html"><svg viewBox="0 0 16 16"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>Overview</a>
+      <a class="nav-item active" href="events.html"><svg viewBox="0 0 16 16"><path d="M5 2h6v4a3 3 0 0 1-6 0z"/><path d="M5 3H2.5v1.5A2 2 0 0 0 5 6.5M11 3h2.5v1.5A2 2 0 0 1 11 6.5M8 9v3M5.5 14h5M6.5 12h3"/></svg>Events<span class="arrow">→</span></a>
+      <a class="nav-item" href="my-events.html"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 4.5V8l2.2 1.5"/></svg>My Events</a>
+      <a class="nav-item" href="#"><svg viewBox="0 0 16 16"><path d="M7 2l1.3 3.7L12 7l-3.7 1.3L7 12 5.7 8.3 2 7l3.7-1.3zM12.5 10.5l.5 1.5 1.5.5-1.5.5-.5 1.5-.5-1.5-1.5-.5 1.5-.5z"/></svg>HackMate AI</a>
+      <a class="nav-item" href="#"><svg viewBox="0 0 16 16"><path d="M7 2l1.3 3.7L12 7l-3.7 1.3L7 12 5.7 8.3 2 7l3.7-1.3zM12.5 10.5l.5 1.5 1.5.5-1.5.5-.5 1.5-.5-1.5-1.5-.5 1.5-.5z"/></svg>IdeaCheck AI</a>
+      <a class="nav-item" href="#"><svg viewBox="0 0 16 16"><circle cx="8" cy="6" r="3.5"/><path d="M6 9l-1 5 3-1.5L11 14l-1-5"/></svg>Certificates</a>
+      <a class="nav-item" href="#"><svg viewBox="0 0 16 16"><rect x="1.5" y="3.5" width="13" height="9" rx="1.5"/><circle cx="5.5" cy="7.5" r="1.4"/><path d="M9 7h4M9 9.5h3M3.7 11c.3-1 3-1 3.6 0"/></svg>Digital Card</a>
+      <a class="nav-item" href="#"><svg viewBox="0 0 16 16"><rect x="3" y="5.5" width="10" height="8" rx="2"/><path d="M8 5.5V3M6 9v1M10 9v1"/><circle cx="8" cy="2.5" r=".6"/></svg>RuleBot AI<span class="tag">AI</span></a>
+      <a class="nav-item" href="#"><svg viewBox="0 0 16 16"><rect x="3" y="5.5" width="10" height="8" rx="2"/><path d="M8 5.5V3M6 9v1M10 9v1"/><circle cx="8" cy="2.5" r=".6"/></svg>Student Guide</a>
+      <a class="nav-item" href="#"><svg viewBox="0 0 16 16"><path d="M4 11V7a4 4 0 0 1 8 0v4l1 1.5H3zM6.5 14h3"/></svg>Official Communication</a>
+      <a class="nav-item" href="#"><svg viewBox="0 0 16 16"><path d="M4 11V7a4 4 0 0 1 8 0v4l1 1.5H3zM6.5 14h3"/></svg>Notifications</a>
+      <a class="nav-item" href="#"><svg viewBox="0 0 16 16"><rect x="3" y="5.5" width="10" height="8" rx="2"/><path d="M8 5.5V3M6 9v1M10 9v1"/><circle cx="8" cy="2.5" r=".6"/></svg>Help &amp; Support</a>
+      <a class="nav-item" href="#"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><circle cx="8" cy="6.5" r="2"/><path d="M4.5 12.3c1-2.2 6-2.2 7 0"/></svg>Profile</a>
+    </nav>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <div><div class="crumb">CampusCode / Student</div><div class="crumb-title">Events</div></div>
+      <div class="top-actions">
+        <button class="icon-btn" aria-label="Notifications"><svg viewBox="0 0 16 16"><path d="M4 11V7a4 4 0 0 1 8 0v4l1 1.5H3zM6.5 14h3"/></svg><span class="dot"></span></button>
+        <button class="refresh"><span class="ico"><svg viewBox="0 0 16 16"><path d="M13.5 6A5.5 5.5 0 0 0 3.2 5M2.5 2.5V5.2h2.7M2.5 10a5.5 5.5 0 0 0 10.3 1M13.5 13.5V10.8h-2.7"/></svg></span>REFRESH</button>
+        <div class="user"><div class="avatar"></div><span>Shambhavi Chaudhary</span></div>
+      </div>
+    </header>
+    <main class="content">
+      <section class="hero">
+        <div><div class="eyebrow">DISCOVER / BACKEND DATA</div><h1>EVENTS.</h1><p>Explore CampusCode events — hackathons, quizzes, workshops — and join the ones you want.</p></div>
+        <div class="live"><b>03</b><span>LIVE DATA</span></div>
+      </section>
+      <nav class="filters" aria-label="Event filters">
+        <button class="chip active" data-filter="all">All events</button>
+        <button class="chip" data-filter="hackathon">Hackathons</button>
+        <button class="chip" data-filter="quiz">Quizzes</button>
+      </nav>
+      <section class="event-grid">
+        <article class="event-card" data-type="hackathon">
+          <div class="banner rebuild"><div class="logo"><i></i><i></i><i></i></div><div class="txt"><div class="pre">CAMPUSCODE PRESENTS</div><h3>ReBuild <em>'26</em></h3><div class="sub">THE DASHBOARD RECREATION HACKATHON</div><div class="pills"><span>CERTIFICATE FOR WINNERS</span><span>INTERNSHIP OPPORTUNITY</span><span>REGISTER BY 5 NOV 2026</span></div></div><div class="bar"></div></div>
+          <div class="idrow"><span class="id">e2798ce3-a1b5-4806-9147-4d9f10c52ef1</span><span class="badge-live">LIVE</span></div>
+          <div class="title-row"><div class="circle">RE</div><h2>ReBuild '26</h2></div>
+          <p class="desc first">ReBuild '26 is an individual dashboard-recreation hackathon by CampusCode. You participate alone, but you must create a team name for tracking and use it on your Unstop registration, the CampusCode portal, and every submission. Round 1 (Friday, 6 Nov, morning to 10 PM): Recreate the CampusCode user flow faithfully — Dashboard, Login, Register, and Student dashboard — and submit your demo any time till 10 PM. Round 2 (Saturday, 7 Nov, top performers from Round 1 only): Build a complete new UI in CampusCode's vibe. Frontend only, mock data is fine. No presentation round. Prizes: Winner certificate + CampusCode internship with ₹15,000 stipend, runner-up certificate, and participation certificates for all. Sunday, 8 Nov (Diwali) is free. This is a paid event (₹50 on Unstop). Paid students receive an invite code — enter it when you join this event on the portal.</p>
+          <div class="spacer"></div>
+          <div class="facts"><div><small>Mode</small><span>—</span></div><div><small>Team size</small><span>Individual</span></div><div><small>Start</small><span>Nov 06, 2026</span></div></div>
+          <div class="actions"><button class="btn-view">View details<span>↗</span></button><button class="btn-joined">✓ Joined</button></div>
+        </article>
+        <article class="event-card" data-type="quiz">
+          <div class="banner quiz"><div class="blob1"></div><div class="blob2"></div><div class="big">50</div><div class="logo"><i></i><i></i><i></i></div><div class="txt"><div class="pre">CAMPUSCODE</div><h3>FIRSTCOMMIT '26</h3><div class="qc">QUIZ COMPETITION</div><div class="meta">50 QUESTIONS &nbsp;·&nbsp; TECH &nbsp;·&nbsp; AI &nbsp;·&nbsp; ENGINEERING</div><div class="date">SUNDAY, 1 NOVEMBER 2026</div></div><div class="bar"></div></div>
+          <div class="idrow"><span class="id">20864c76-4792-4b09-a2e9-ff6764bf20d6</span><span class="badge-done">COMPLETED</span></div>
+          <div class="title-row top"><div class="circle">FQ</div><h2>FirstCommit '26 Quiz Competition 2.0</h2></div>
+          <div class="kind">QUIZ · SOLO · TIMED</div>
+          <p class="desc">This is the reattempt quiz those who missed</p>
+          <div class="spacer"></div>
+          <div class="facts"><div><small>Mode</small><span>—</span></div><div><small>Format</small><span>Solo</span></div><div><small>Start</small><span>—</span></div></div>
+          <div class="actions"><button class="btn-view">View details<span>↗</span></button><button class="btn-reg">Register for quiz ↗</button></div>
+        </article>
+        <article class="event-card" data-type="quiz">
+          <div class="banner quiz"><div class="blob1"></div><div class="blob2"></div><div class="big">50</div><div class="logo"><i></i><i></i><i></i></div><div class="txt"><div class="pre">CAMPUSCODE</div><h3>FIRSTCOMMIT '26</h3><div class="qc">QUIZ COMPETITION</div><div class="meta">50 QUESTIONS &nbsp;·&nbsp; TECH &nbsp;·&nbsp; AI &nbsp;·&nbsp; ENGINEERING</div><div class="date">SUNDAY, 1 NOVEMBER 2026</div></div><div class="bar"></div></div>
+          <div class="idrow"><span class="id">80299fc1-3e30-466f-a146-fd45c77c84be</span><span class="badge-done">COMPLETED</span></div>
+          <div class="title-row top"><div class="circle dark">FQ</div><h2>FirstCommit '26 Quiz Competition</h2></div>
+          <div class="kind">QUIZ · SOLO · TIMED</div>
+          <p class="desc">The quiz features 50 questions across technology, AI, and engineering — 42 multiple-choice questions and 8 true/false questions — to be completed in 30 minutes on Sunday, 1 November 2026. It is conducted online on the CampusCode platform, and every participant gets a single attempt.</p>
+          <div class="spacer"></div>
+          <div class="facts"><div><small>Mode</small><span>—</span></div><div><small>Format</small><span>Solo</span></div><div><small>Start</small><span>—</span></div></div>
+          <div class="actions"><button class="btn-view">View details<span>↗</span></button><button class="btn-joined">✓ Joined</button></div>
+        </article>
+      </section>
+    </main>
+  </div>
+</div>
+<script>
+  // Event filters: show only cards matching the selected type
+  (function () {
+    var chips = document.querySelectorAll('.chip');
+    var cards = document.querySelectorAll('.event-card');
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var f = chip.getAttribute('data-filter');
+        chips.forEach(function (c) { c.classList.toggle('active', c === chip); });
+        cards.forEach(function (card) {
+          card.hidden = !(f === 'all' || card.getAttribute('data-type') === f);
+        });
+      });
+    });
+  })();
+</script>
+</body>
+</html>
