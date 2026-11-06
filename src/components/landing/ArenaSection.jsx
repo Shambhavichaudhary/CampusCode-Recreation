@@ -7,8 +7,26 @@ const CATEGORIES = [
 
 /** ArenaItem - one clickable row; its arrow moves on hover (CSS). */
 function ArenaItem({ number, title, text, tag }) {
+  const handlePointerMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+
+    e.currentTarget.style.setProperty(
+      "--mouse-x",
+      `${e.clientX - rect.left}px`
+    );
+
+    e.currentTarget.style.setProperty(
+      "--mouse-y",
+      `${e.clientY - rect.top}px`
+    );
+  };
+
   return (
-    <a href="#" className="arena-item">
+    <a
+      href="#"
+      className="arena-item"
+      onPointerMove={handlePointerMove}
+    >
       <span className="arena-item-number">{number}</span>
       <h3>{title}</h3>
       <p>{text}</p>

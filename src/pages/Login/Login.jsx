@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import usePageStyles from '../../hooks/usePageStyles.js';
 import useDocumentTitle from '../../hooks/useDocumentTitle.js';
 import loginCss from '../../styles/pages/login.css?inline';
@@ -35,8 +36,29 @@ const CAPTCHA_GLYPHS = [
 export default function Login() {
   const navigate = useNavigate();
 
+  // LOGIN PROGRESS ANIMATION
+  // isRiding  -> true while the bus drives across the security box (adds .is-riding, see login.css)
+  // hasNavigated -> makes sure we leave the page exactly once
+  const [isRiding, setIsRiding] = useState(false);
+  const hasNavigated = useRef(false);
+  const fallbackTimer = useRef(null);
+
+  // Go to the dashboard - called only AFTER the bus has reached the finish line.
+  const goToDashboard = () => {
+    if (hasNavigated.current) return;
+    hasNavigated.current = true;
+    clearTimeout(fallbackTimer.current);
+    navigate('/student');
+  };
+
+  // Clean up the safety timer if the user leaves the page in the meantime.
+  useEffect(() => () => clearTimeout(fallbackTimer.current), []);
+
 const handleLogin = (event) => {
   event.preventDefault();
+
+  // Ignore extra clicks / Enter presses while the animation is running (no duplicate submits)
+  if (isRiding) return;
 
   const form = new FormData(event.currentTarget);
 
@@ -56,7 +78,12 @@ const handleLogin = (event) => {
     return;
   }
 
-  navigate('/student');
+  // Authentication succeeded: start the progress animation instead of navigating right away.
+  // The dashboard opens from <div className="login-security"> onAnimationEnd below.
+  // The timer is only a safety net (slightly longer than the 2s busRide animation) in case
+  // the browser never fires animationend, so the user can never get stuck on this page.
+  setIsRiding(true);
+  fallbackTimer.current = setTimeout(goToDashboard, 2400);
 };
   useDocumentTitle('Login — CampusCode');
   usePageStyles([loginCss, authCss]);
@@ -117,7 +144,12 @@ const handleLogin = (event) => {
             </div>
 
             {/* Security status box with the little bus (animation classes are in login.css) */}
-            <div className="login-security" aria-label="Security check status">
+            <div
+              className={`login-security${isRiding ? ' is-riding' : ''}`}
+              aria-label="Security check status"
+              // animationend bubbles up from the bus: when busRide finishes, the progress is complete
+              onAnimationEnd={(e) => { if (e.animationName === 'busRide') goToDashboard(); }}
+            >
               <span className="login-truck" aria-hidden="true">
                 <svg viewBox="0 0 90 42">
                   <rect x="2" y="3" width="84" height="34" rx="9" fill="#111" />
@@ -133,7 +165,7 @@ const handleLogin = (event) => {
               <span className="login-security__bar"></span>
             </div>
 
-            <button className="submit-btn login-submit" type="submit">
+            <button className="submit-btn login-submit" type="submit" disabled={isRiding} aria-busy={isRiding}>
               <span className="submit-btn__label">LOGIN</span>
               <span className="submit-btn__arrow" aria-hidden="true">↗</span>
             </button>

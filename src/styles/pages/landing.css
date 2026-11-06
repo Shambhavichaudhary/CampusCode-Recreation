@@ -548,7 +548,7 @@ body {
 
     font-family: var(--font-main);
 
-    font-size: clamp(100px, 10vw, 260px);
+    font-size: clamp(116px, 14vw, 264px);
 
     font-weight: 900;
 
@@ -1405,6 +1405,8 @@ body {
 
 /* Individual Arena Row */
 
+/* ================= ARENA ITEM ================= */
+
 .arena-item {
     position: relative;
 
@@ -1426,14 +1428,26 @@ body {
 
     color: #111;
 
-    transition: background 0.3s ease;
+    /* Animation additions */
+    transform: translateY(0);
+
+    transition:
+        transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+        background 0.4s ease,
+        box-shadow 0.4s ease;
 }
 
 
-/* Row Hover */
+/* ================= ARENA ITEM HOVER ================= */
 
 .arena-item:hover {
-    background: rgba(145, 119, 255, 0.045);
+    transform: translateY(-4px);
+
+    background: #fff;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.045);
+
+    z-index: 2;
 }
 
 

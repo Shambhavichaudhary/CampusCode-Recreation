@@ -700,6 +700,217 @@ svg { display: block; }
 
 .notifications__text { margin-top: 10px; font-size: 11.5px; color: #8a8a85; }
 
+/* ==========================================
+   STUDENT DASHBOARD - PREMIUM BUTTON HOVER
+   ========================================== */
+
+/* Common smooth interaction */
+
+.btn,
+.event__btn,
+.chip,
+.tag-btn,
+.icon-btn,
+.refresh-btn,
+.link {
+    transition:
+        transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 0.35s ease,
+        background-color 0.35s ease,
+        border-color 0.35s ease;
+}
+
+
+/* ==========================================
+   BUTTON HOVER MOVEMENT
+   ========================================== */
+
+/* Main lime buttons */
+
+.btn--lime:hover,
+.btn--bright:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(169, 228, 77, 0.32);
+}
+
+/* Event buttons */
+
+.event__btn:hover {
+    transform: translateY(-3px);
+    border-color: var(--lime);
+    box-shadow: 0 7px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* AI Spotlight chips */
+
+.chip:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(171, 231, 81, 0.22);
+}
+
+/* Activity buttons */
+
+.tag-btn:hover {
+    transform: translateY(-3px);
+    border-color: var(--lime);
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Topbar icon button */
+
+.icon-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 16px rgba(0, 0, 0, 0.09);
+}
+
+/* Refresh button */
+
+.refresh-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-strong);
+    box-shadow: 0 7px 16px rgba(0, 0, 0, 0.07);
+}
+
+/* Text navigation links */
+
+.link:hover {
+    transform: translateX(3px);
+    color: var(--purple);
+}
+
+
+/* ==========================================
+   BUTTON ARROW ANIMATION
+   ========================================== */
+
+.btn__arrow {
+    display: inline-block;
+    transition: transform 0.35s ease;
+}
+
+.btn:hover .btn__arrow {
+    transform: translateX(5px);
+}
+
+
+/* ==========================================
+   BUTTON LIGHT SWEEP + ANIMATED BORDER
+   ========================================== */
+
+/* Button preparation */
+
+.btn--lime,
+.btn--bright,
+.event__btn,
+.icon-btn,
+.refresh-btn {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Moving white shimmer */
+
+.btn--lime::after,
+.btn--bright::after,
+.event__btn::after {
+    content: "";
+
+    position: absolute;
+    top: -50%;
+    left: -120%;
+
+    width: 45%;
+    height: 200%;
+
+    background: linear-gradient(
+        110deg,
+        transparent,
+        rgba(255, 255, 255, 0.12),
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.12),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+    opacity: 0;
+    pointer-events: none;
+
+    transition:
+        left 0.65s ease,
+        opacity 0.15s ease 0.5s;
+}
+
+/* Shimmer on hover */
+
+.btn--lime:hover::after,
+.btn--bright:hover::after,
+.event__btn:hover::after {
+    left: 140%;
+    opacity: 1;
+
+    transition:
+        left 0.65s ease,
+        opacity 0.1s ease;
+}
+
+
+/* Animated green bottom line */
+
+.icon-btn::after,
+.refresh-btn::after {
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 30%;
+    height: 2px;
+
+    background: #a9e44d;
+
+    transform: translateX(-110%);
+    pointer-events: none;
+
+    transition: transform 0.65s ease;
+}
+
+/* Green outline and background */
+
+.icon-btn:hover,
+.refresh-btn:hover {
+    border-color: #a9e44d;
+    background-color: #fbfff2;
+
+    box-shadow: 0 4px 14px rgba(169, 228, 77, 0.12);
+}
+
+/* Bottom line movement */
+
+.icon-btn:hover::after,
+.refresh-btn:hover::after {
+    transform: translateX(350%);
+}
+
+
+/* ==========================================
+   REDUCED MOTION ACCESSIBILITY
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .btn,
+    .event__btn,
+    .chip,
+    .tag-btn,
+    .icon-btn,
+    .refresh-btn,
+    .link,
+    .btn__arrow {
+        transition: none;
+    }
+}
+
 /* =========================================================
    RESPONSIVE (adapts existing components only)
    ========================================================= */

@@ -19,7 +19,7 @@ export default function OverviewTopbar() {
         </button>
         <div className="user">
           <span className="user__avatar"><svg><use href="#avatar" /></svg></span>
-          <span className="user__name">Shambhavi Chaudhary</span>
+          <span className="user__name">Student Name</span>
         </div>
       </div>
     </header>

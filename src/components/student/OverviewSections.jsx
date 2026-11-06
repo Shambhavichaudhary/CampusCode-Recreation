@@ -8,7 +8,7 @@ export function Welcome() {
   return (
     <section className="welcome">
       <p className="eyebrow eyebrow--green">STUDENT WORKSPACE / LIVE</p>
-      <h2 className="welcome__title">WELCOME BACK, <span className="welcome__name">SHAMBHAVI</span>.</h2>
+      <h2 className="welcome__title">WELCOME BACK, <span className="welcome__name">STUDENT</span>.</h2>
       <p className="welcome__sub">Your CampusCode activity is loaded directly from the backend.</p>
     </section>
   );
