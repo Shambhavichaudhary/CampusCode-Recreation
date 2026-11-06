@@ -39,7 +39,11 @@ Visit the live site here: [https://campus-code-ten.vercel.app/](https://campus-c
 
 <!-- Replace this placeholder with the GitHub demo video link -->
 
-[INSERT PROJECT DEMO VIDEO HERE]
+
+
+https://github.com/user-attachments/assets/642a3ce7-6435-4aa1-b3ca-1d2fdb93ea58
+
+
 
 ---
 
